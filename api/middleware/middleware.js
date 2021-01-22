@@ -66,9 +66,9 @@ function validateProject(req, res, next) {
 
 function validateResource(req, res, next) {
   const body = req.body;
-  const name = req.body.name;
+  const resource_name = req.body.resource_name;
   if (Object.keys(body).length !== 0) {
-    if (name) {
+    if (resource_name) {
       next();
     } else {
       res.status(400).json({ message: `missing required name field` });
@@ -80,12 +80,12 @@ function validateResource(req, res, next) {
 
 function validateTask(req, res, next) {
   const body = req.body;
-  const name = req.body.name;
+  const task_description = req.body.task_description;
   if (Object.keys(body).length !== 0) {
-    if (name) {
+    if (task_description) {
       next();
     } else {
-      res.status(400).json({ message: `missing required name field` });
+      res.status(400).json({ message: `missing required description field` });
     }
   } else {
     res.status(400).json({ message: "missing Task data" });
