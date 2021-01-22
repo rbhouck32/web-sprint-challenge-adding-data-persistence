@@ -1,4 +1,5 @@
 const express = require("express");
+const { validateResource } = require("../middleware/middleware.js");
 
 const router = express.Router();
 
