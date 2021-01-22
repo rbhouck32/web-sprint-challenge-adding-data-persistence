@@ -52,9 +52,9 @@ async function validateTaskId(req, res, next) {
 
 function validateProject(req, res, next) {
   const body = req.body;
-  const name = req.body.name;
+  const project_name = req.body.project_name;
   if (Object.keys(body).length !== 0) {
-    if (name) {
+    if (project_name) {
       next();
     } else {
       res.status(400).json({ message: `missing required name field` });
