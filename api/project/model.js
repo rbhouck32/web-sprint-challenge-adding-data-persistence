@@ -7,7 +7,14 @@ module.exports = {
 };
 
 function get() {
-  return db("projects");
+  return db("projects as p").select(
+    "p.project_id",
+    "p.project_name",
+    "p.project_description",
+    db.raw(
+      "CASE WHEN p.project_completed == 0 THEN false ELSE true END AS project_completed "
+    )
+  );
 }
 
 function getById(id) {

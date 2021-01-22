@@ -17,6 +17,9 @@ router.post("/", validateTask, async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const taskData = await Tasks.get();
+
+    taskData.task_completed = taskData.task_completed === 0 ? false : true;
+
     res.status(200).json(taskData);
   } catch (error) {
     next(error);
